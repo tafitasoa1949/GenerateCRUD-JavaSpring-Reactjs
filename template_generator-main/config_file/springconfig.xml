@@ -1,0 +1,138 @@
+<config>
+    <returnType>
+        <findAll>ResponseEntity&lt;List&lt;#CLASS_NAME#&gt;&gt;</findAll>
+        <findOne>ResponseEntity&lt;#CLASS_NAME#&gt;</findOne>
+        <insert>ResponseEntity&lt;#CLASS_NAME#&gt;</insert>
+        <update>ResponseEntity&lt;#CLASS_NAME#&gt;</update>
+        <delete>void</delete>
+    </returnType>
+    
+    <args>
+        <findAll></findAll>
+        <findOne>@PathVariable Integer id</findOne>
+        <insert>@RequestBody #CLASS_NAME# #CLASS_NAME_2#</insert>
+        <update>@PathVariable Integer id, @RequestBody #CLASS_NAME# #CLASS_NAME_2#</update>
+        <delete>@PathVariable Integer id</delete>
+        <constructor>#CLASS_NAME#Repository #CLASS_NAME_2#Repository</constructor>
+    </args>
+
+    <root>
+        <findAll>@GetMapping</findAll>
+        <findOne>@GetMapping("/{id}")</findOne>
+        <insert>@PostMapping</insert>
+        <update>@PutMapping("/{id}")</update>
+        <delete>@DeleteMapping("/{id}")</delete>
+    </root>
+    
+    <necessaryImport>
+        <utilImport>#MODEL_PACKAGE#.#CLASS_NAME#</utilImport>
+        <utilImport>template.generation.repository.#CLASS_NAME#Repository</utilImport>
+        <utilImport>org.springframework.beans.factory.annotation.Autowired</utilImport>
+        <utilImport>org.springframework.http.ResponseEntity</utilImport>
+        <utilImport>org.springframework.web.bind.annotation.*</utilImport>
+        <utilImport>org.springframework.http.HttpStatus</utilImport>
+        <utilImport>java.util.List</utilImport>
+        <utilImport>java.util.Optional</utilImport>
+    </necessaryImport>
+    
+    <util>
+        <private>private</private>
+        <definition>public class</definition>
+        <public>public</public>
+        <extension>.java</extension>
+        <import>import</import>
+        <package>package</package>
+        <packageName>template.generation.controller</packageName>
+        <modelPackage>template.generation.model</modelPackage>
+        <endLine>;</endLine>
+        <startBlock>{</startBlock>
+        <endBlock>}</endBlock>
+        <startPackage>;</startPackage>
+        <endPackage></endPackage>
+        <startClass>{</startClass>
+        <endClass>}</endClass>
+        <this>this.</this>
+        <attribution>=</attribution>
+        <return>return</return>
+        <controllerAnnotation>@RestController</controllerAnnotation>
+        <constructorAnnotation>@Autowired</constructorAnnotation>
+        <root>@RequestMapping("/#CLASS_NAME_2#s")</root>
+        <extends></extends>
+        <controllerMotherClass></controllerMotherClass>
+        <cors>@CrossOrigin("*")</cors>
+        <repository>#CLASS_NAME#Repository #CLASS_NAME_2#Repository</repository>
+    </util>
+
+    <findAllContent>
+            try {
+                List&lt;#CLASS_NAME#&gt; liste = #CLASS_NAME_2#Repository.findAll();
+                if (!liste.isEmpty()) {
+                    return ResponseEntity.ok().body(liste);
+                } else {
+                    return ResponseEntity.status(404).body(liste);
+                }
+            }catch (Exception e) {
+               return ResponseEntity.status(500).body(null);
+            }
+    </findAllContent>
+
+    <findOneContent>
+        try{
+            #CLASS_NAME# one = #CLASS_NAME_2#Repository.findById(id).orElse(null);
+            if(one != null){
+                return ResponseEntity.ok().body(one);
+            }else{
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(one);
+            }
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    </findOneContent>
+
+    <insertContent>
+        try{
+            #CLASS_NAME# creation = #CLASS_NAME_2#Repository.save(#CLASS_NAME_2#);
+            if(creation != null){
+               return ResponseEntity.status(HttpStatus.CREATED).body(creation);
+            }else{
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(creation);
+            }
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    </insertContent>
+
+    <updateContent>
+        try{
+            Optional&lt;#CLASS_NAME#&gt; opt = #CLASS_NAME_2#Repository.findById(id);
+            if(opt.isPresent()){
+                #CLASS_NAME# update = opt.get();
+                #CLASS_NAME_2#.setId(update.getId());
+                #CLASS_NAME_2#Repository.save(#CLASS_NAME_2#);
+                if(#CLASS_NAME_2# != null){
+                    return ResponseEntity.ok().body(#CLASS_NAME_2#);
+                }else{
+                    return ResponseEntity.status(HttpStatus.NOT_FOUND).body( #CLASS_NAME_2#);
+                }
+            }else{
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body( #CLASS_NAME_2#);
+            }
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    </updateContent>
+
+    <deleteContent>
+        #CLASS_NAME_2#Repository.deleteById(id);
+    </deleteContent>
+
+    <constructorContent>
+        this.#CLASS_NAME_2#Repository = #CLASS_NAME_2#Repository;
+    </constructorContent>
+
+
+    <suppContent>
+
+    </suppContent>
+
+    </config>

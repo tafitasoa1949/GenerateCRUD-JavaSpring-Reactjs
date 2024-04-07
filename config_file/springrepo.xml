@@ -1,0 +1,31 @@
+<config>
+
+    <necessaryImport>
+        <utilImport>#MODEL_PACKAGE#.#CLASS_NAME#</utilImport>
+        <utilImport>org.springframework.data.jpa.repository.JpaRepository</utilImport>
+        <utilImport>org.springframework.stereotype.Repository</utilImport>
+    </necessaryImport>
+    
+    <util>
+        <definition>public interface</definition>
+        <extension>.java</extension>
+        <import>import</import>
+        <package>package</package>
+        <packageName>template.generation.repository</packageName>
+        <modelPackage>template.generation.model</modelPackage>
+        <endLine>;</endLine>
+        <startBlock>{</startBlock>
+        <endBlock>}</endBlock>
+        <startPackage>;</startPackage>
+        <endPackage></endPackage>
+        <startClass>{</startClass>
+        <endClass>}</endClass>
+        <this>this.</this>
+        <attribution>=</attribution>
+        <extend>extends</extend>
+        <return>return</return>
+        <repoMother>JpaRepository&lt;#CLASS_NAME#, Integer&gt;</repoMother>
+        <return>return</return>
+        <repositoryAnnotation>@Repository</repositoryAnnotation>
+    </util>
+</config>

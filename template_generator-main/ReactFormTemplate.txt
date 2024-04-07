@@ -1,0 +1,61 @@
+import React, { useState, useEffect } from 'react';
+import './Form.css';
+
+const Formulaire = () => {
+  const [formData, setFormData] = useState({});
+  const [columns, setColumns] = useState([]);
+#FORMS_STATE#
+
+#FETCH_PK_DATA#
+
+  const createFormData = (form) => {
+      let formData = new FormData(form);
+      let object = {
+#FORMS_OBJECT#
+      };
+      return object;
+    }
+
+  const handleChange = (e, columnName) => {
+    setFormData({
+      ...formData,
+      [columnName]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    let form = document.getElementById("form");
+    let formDatas = createFormData(form);
+
+    const xhr = new XMLHttpRequest();
+    let url = "#INSERT_URL#";
+
+    xhr.open("#INSERT_METHOD#", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 201) {
+                window.location.href = "#LIST_LINK#";
+            } else {
+                console.error('Error adding object');
+            }
+        }
+    };
+
+    xhr.send(JSON.stringify(formDatas));
+};
+
+  return (
+  <>
+  <form onSubmit={handleSubmit} id="form">
+#FORMS#
+     <button type="submit">Submit</button>
+  </form>
+  </>
+);
+};
+
+export default Formulaire;

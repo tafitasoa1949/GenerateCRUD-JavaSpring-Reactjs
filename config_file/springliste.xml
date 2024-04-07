@@ -1,0 +1,44 @@
+<config>
+
+    <methods>
+        <List>GET</List>
+        <Insert>PUT</Insert>
+        <Update>PUT</Update>
+        <Delete>DELETE</Delete>
+    </methods>
+    <util>
+        <extension>.js</extension>
+        <url>http://localhost:8080/#CLASS_NAME_2#s</url>
+        <insertUrl>http://localhost:8080/#CLASS_NAME_2#s</insertUrl>
+        <updateUrl>/update</updateUrl>
+        <deleteUrl>http://localhost:8080/#CLASS_NAME_2#s</deleteUrl>
+        <dossier>views</dossier>
+        <insertLink>/insert</insertLink>
+    </util>
+
+    <cssContent>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+    }
+    
+    thead {
+        background-color: #f2f2f2;
+    }
+    
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    
+    tr:hover {
+        background-color: #f1f1f1;
+    }              
+    </cssContent>
+</config>

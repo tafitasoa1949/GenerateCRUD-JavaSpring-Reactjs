@@ -1,0 +1,12 @@
+run main techno:spring classe:
+controller-repo-model -> /spring/generation
+views/ -> react
+run spring
+run react
+
+
+TODO:
+foreign key
+erreur scanner main
+nom colonne********
+type input

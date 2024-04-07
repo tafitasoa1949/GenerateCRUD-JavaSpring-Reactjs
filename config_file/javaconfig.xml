@@ -1,0 +1,59 @@
+<config>
+<databaseRef>
+    <int4>int</int4>
+    <varchar>String</varchar>
+    <timestamp>Timestamp</timestamp>
+    <bool>boolean</bool>
+    <float8>double</float8>
+    <int8>long</int8>
+    <int2>int</int2>
+    <serial>int</serial>
+    <int1>int</int1>
+    <numeric>BigDecimal</numeric>
+    <date>Date</date>
+    <time>Time</time>
+    <bytea>byte[]</bytea>
+    <text>String</text>
+    <float4>float</float4>
+</databaseRef>
+
+<import>
+    <timestamp>java.sql.Timestamp</timestamp>
+    <numeric>java.math.BigDecimal</numeric>
+    <date>java.sql.Date</date>
+    <time>java.sql.Time</time>
+    <bytea>byte[]</bytea>
+    <text>String</text>
+    <float4>float</float4>
+</import>
+
+<necessaryImport>
+    <utilImport>jakarta.persistence.Entity</utilImport>
+    <utilImport>jakarta.persistence.Id</utilImport>
+    <utilImport>jakarta.persistence.GeneratedValue</utilImport>
+    <utilImport>jakarta.persistence.GenerationType</utilImport>
+    <utilImport>jakarta.persistence.*</utilImport>
+</necessaryImport>
+
+<util>
+    <private>private</private>
+    <definition>public class</definition>
+    <public>public</public>
+    <protected>protected</protected>
+    <extension>.java</extension>
+    <annotation>@Entity</annotation>
+    <import>import</import>
+    <package>package</package>
+    <packageName>template.generation.model</packageName>
+    <endLine>;</endLine>
+    <startBlock>{</startBlock>
+    <endBlock>}</endBlock>
+    <startPackage>;</startPackage>
+    <endPackage></endPackage>
+    <startClass>{</startClass>
+    <endClass>}</endClass>
+    <this>this.</this>
+    <attribution>=</attribution>
+    <return>return</return>
+</util>
+</config>

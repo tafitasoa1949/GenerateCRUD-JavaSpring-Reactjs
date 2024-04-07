@@ -1,0 +1,30 @@
+<config>
+    <necessaryImport>
+        <utilImport>jakarta.persistence.Entity</utilImport>
+        <utilImport>jakarta.persistence.Id</utilImport>
+        <utilImport>jakarta.persistence.GeneratedValue</utilImport>
+        <utilImport>jakarta.persistence.GenerationType</utilImport>
+    </necessaryImport>
+    
+    <util>
+        <private>private</private>
+        <definition>public class</definition>
+        <public>public</public>
+        <protected>protected</protected>
+        <extension>.java</extension>
+        <annotation>@Entity</annotation>
+        <import>import</import>
+        <package>package</package>
+        <packageName>template.generation.model</packageName>
+        <endLine>;</endLine>
+        <startBlock>{</startBlock>
+        <endBlock>}</endBlock>
+        <startPackage>;</startPackage>
+        <endPackage></endPackage>
+        <startClass>{</startClass>
+        <endClass>}</endClass>
+        <this>this.</this>
+        <attribution>=</attribution>
+        <return>return</return>
+    </util>
+    </config>
